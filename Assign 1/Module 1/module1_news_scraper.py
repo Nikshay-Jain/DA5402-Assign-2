@@ -79,7 +79,7 @@ def scrape_news_page(soup: BeautifulSoup) -> List[Dict]:
             })
     return articles
 
-def save_output(data: List[Dict], format: str = 'csv'):
+def save_output(data: List[Dict], format: str = 'json'):
     if not data:
         print("No data to save.")
         return

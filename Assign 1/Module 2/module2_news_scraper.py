@@ -1,85 +1,136 @@
 import argparse
 import configparser
+import time
+import random
+import json
 from pathlib import Path
-from typing import Dict
-import requests
-from bs4 import BeautifulSoup
-import undetected_chromedriver as uc
-from selenium.webdriver.support.ui import WebDriverWait
+from typing import Dict, List, Optional
+from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import TimeoutException, WebDriverException
+from webdriver_manager.chrome import ChromeDriverManager
+import undetected_chromedriver as uc
+import subprocess
 
-def load_config(config_path: str = "module2_config.ini") -> Dict:
+# Configuration handling
+def load_config(config_path: str = "news_config.ini") -> Dict:
     config = configparser.ConfigParser()
+    
+    # Set default values
+    default_config = {
+        'base_url': 'https://news.google.com',
+        'nav_selector': '//a[contains(@aria-label, "Top Stories")]',
+        'article_selector': 'article',
+        'timeout': 45,
+        'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        'chrome_version': 121,
+        'output_file': 'top_stories.json'
+    }
+    
     if Path(config_path).exists():
         config.read(config_path)
+        # Update default values with any config file values
         return {
-            'base_url': config.get('DEFAULT', 'BaseURL', fallback='https://news.google.com'),
-            'nav_selector': config.get('DEFAULT', 'NavSelector', 
-                fallback='div[role="navigation"] a:first-child'),
-            'user_agent': config.get('DEFAULT', 'UserAgent', 
-                fallback='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'),
-            'use_selenium': config.getboolean('DEFAULT', 'UseSelenium', fallback=True)
+            'base_url': config.get('DEFAULT', 'BaseURL', fallback=default_config['base_url']),
+            'nav_selector': config.get('DEFAULT', 'NavSelector', fallback=default_config['nav_selector']),
+            'article_selector': config.get('DEFAULT', 'ArticleSelector', fallback=default_config['article_selector']),
+            'timeout': config.getint('DEFAULT', 'Timeout', fallback=default_config['timeout']),
+            'user_agent': config.get('DEFAULT', 'UserAgent', fallback=default_config['user_agent']),
+            'chrome_version': config.getint('DEFAULT', 'ChromeVersion', fallback=default_config['chrome_version']),
+            'output_file': config.get('DEFAULT', 'OutputFile', fallback=default_config['output_file'])
         }
-    return {}
+    return default_config
+
 
 def parse_arguments():
-    parser = argparse.ArgumentParser(description='Google News Navigation Scraper')
+    parser = argparse.ArgumentParser(description='Google News Scraper')
     parser.add_argument('--url', help='Base URL for Google News')
-    parser.add_argument('--selector', help='CSS selector for navigation link')
-    parser.add_argument('--config', default='module2_config.ini', help='Configuration file path')
+    parser.add_argument('--selector', help='XPath selector for Top Stories link')
+    parser.add_argument('--timeout', type=int, help='Maximum wait time in seconds')
+    parser.add_argument('--config', default='news_config.ini', help='Configuration file path')
+    parser.add_argument('--chrome-version', type=int, help='Specific Chrome version to use')
+    parser.add_argument('--output', help='Output JSON file name')
     return parser.parse_args()
 
-def get_soup_selenium(url: str) -> BeautifulSoup:
+# Selenium setup
+def setup_driver(config: Dict) -> webdriver.Chrome:
     options = uc.ChromeOptions()
     options.add_argument("--headless=new")
-    driver = uc.Chrome(options=options)
-    try:
-        driver.get(url)
-        WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, 'div[role="navigation"]'))
-        )
-        return BeautifulSoup(driver.page_source, 'html.parser')
-    finally:
-        driver.quit()
+    options.add_argument("--disable-blink-features=AutomationControlled")
+    options.add_argument(f"user-agent={config['user_agent']}")
+    return uc.Chrome(
+        options=options,
+        version_main=config['chrome_version'],
+        driver_executable_path=ChromeDriverManager().install()
+    )
 
-def get_soup_requests(url: str, headers: Dict) -> BeautifulSoup:
+# Core scraping functions
+def get_top_stories_url(driver: webdriver.Chrome, config: Dict) -> Optional[str]:
     try:
-        response = requests.get(url, headers=headers, timeout=10)
-        response.raise_for_status()
-        return BeautifulSoup(response.text, 'html.parser')
-    except requests.exceptions.RequestException as e:
-        print(f"Request failed: {e}")
+        driver.get(config['base_url'])
+        time.sleep(random.uniform(2, 4))
+        
+        WebDriverWait(driver, config['timeout']).until(
+            EC.presence_of_element_located((By.XPATH, '//main'))
+        )
+
+        selectors = [
+            config['nav_selector'],
+            '//a[contains(@href, "/topics/")]',
+            '//a[.//*[contains(text(), "Top")]]'
+        ]
+        
+        for selector in selectors:
+            try:
+                element = WebDriverWait(driver, 15).until(
+                    EC.element_to_be_clickable((By.XPATH, selector))
+                )
+                return element.get_attribute('href')
+            except TimeoutException:
+                continue
         return None
 
-def extract_nav_link(soup: BeautifulSoup, selector: str) -> str:
-    nav_item = soup.select_one(selector)
-    if nav_item and (link := nav_item.get('href')):
-        return f'https://news.google.com{link[1:]}' if link.startswith('./') else link
-    return None
+    except Exception as e:
+        print(f"Error finding Top Stories: {str(e)}")
+        driver.save_screenshot('debug_top_stories.png')
+        return None
 
+# Main workflow
 def main():
     args = parse_arguments()
     config = load_config(args.config)
     
-    base_url = args.url or config['base_url']
-    nav_selector = args.selector or config['nav_selector']
-    user_agent = config['user_agent']
-    
-    headers = {'User-Agent': user_agent}
-    
-    if config['use_selenium']:
-        soup = get_soup_selenium(base_url)
-    else:
-        soup = get_soup_requests(base_url, headers)
-    
-    if soup:
-        if nav_link := extract_nav_link(soup, nav_selector):
-            print(f"Found navigation link: {nav_link}")
+    # Apply command-line overrides
+    if args.url: config['base_url'] = args.url
+    if args.selector: config['nav_selector'] = args.selector
+    if args.timeout: config['timeout'] = args.timeout
+    if args.chrome_version: config['chrome_version'] = args.chrome_version
+    if args.output: config['output_file'] = args.output
+
+    driver = setup_driver(config)
+    try:
+        if top_stories_url := get_top_stories_url(driver, config):
+            print(f"Found Top Stories: {top_stories_url}")
+            format = "json"
+            command = [
+                "python",
+                "./Assign 1/Module 1/module1_news_scraper.py",
+                "--url",
+                top_stories_url,
+                "--format",
+                format
+            ]
+            subprocess.run(command)
+
         else:
-            print("No navigation link found. Try updating the selector.")
-    else:
-        print("Failed to retrieve page content")
+            print("Failed to find Top Stories section")
+            
+    except WebDriverException as e:
+        print(f"Browser error: {str(e)}")
+    finally:
+        driver.quit()
 
 if __name__ == "__main__":
     main()
