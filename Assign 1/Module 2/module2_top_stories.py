@@ -79,7 +79,7 @@ def get_top_stories_url(driver: webdriver.Chrome, config: Dict) -> Optional[str]
         selectors = [
             config['nav_selector'],
             '//a[contains(@href, "/topics/")]',
-            '//a[.//*[contains(text(), "Top")]]'
+            '//a[.//*[contains(text(), "Top stories")]]'
         ]
         
         for selector in selectors:
@@ -113,14 +113,11 @@ def main():
     try:
         if top_stories_url := get_top_stories_url(driver, config):
             print(f"Found Top Stories: {top_stories_url}")
-            format = "json"
             command = [
                 "python",
-                "./Assign 1/Module 1/module1_news_scraper.py",
+                "module2_scrape.py",
                 "--url",
-                top_stories_url,
-                "--format",
-                format
+                top_stories_url
             ]
             subprocess.run(command)
 
