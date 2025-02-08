@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  da5402:
+    image: da5402
+    build:
+      context: .
+      dockerfile: ./Dockerfile
