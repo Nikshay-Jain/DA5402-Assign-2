@@ -20,11 +20,13 @@ def load_config(config_path: str = "config.ini"):
     return {}
 
 def parse_arguments():
-    """ Parse command-line arguments. """
+    """Parse command-line arguments for Google News Scraper."""
     parser = argparse.ArgumentParser(description='Google News Scraper')
-    parser.add_argument('--url', help='Base URL for Google News')
-    parser.add_argument('--config', default='config.ini', help='Path to configuration file')
-    return parser.parse_args()
+    parser.add_argument('--url', type=str, help='Base URL for Google News')
+    parser.add_argument('--config', type=str, default='config.ini', help='Path to configuration file')
+    
+    args, unknown = parser.parse_known_args()
+    return args
 
 def scroll_to_load(driver, pause_time=2):
     """ Scroll down the page multiple times to load more news articles. """

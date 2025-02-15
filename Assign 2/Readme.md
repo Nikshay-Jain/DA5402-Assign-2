@@ -9,7 +9,7 @@ This project is a Google News scraper that allows users to extract news articles
 ## Requirements
 
 ### System Requirements
-1. **Python 3.8+**
+1. **Python 3.9+**
 2. **Database**: PostgreSQL 14+
 3. **Operating System**: Linux/MacOS (Windows WSL2 supported)
 4. **ChromeDriver**: Required for headless browsing
