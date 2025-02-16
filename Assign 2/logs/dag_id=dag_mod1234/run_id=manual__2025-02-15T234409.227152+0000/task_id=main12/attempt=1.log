@@ -1,0 +1,92 @@
+[2025-02-15T23:44:14.009+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-15T23:44:14.030+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_mod1234.main12 manual__2025-02-15T23:44:09.227152+00:00 [queued]>
+[2025-02-15T23:44:14.044+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_mod1234.main12 manual__2025-02-15T23:44:09.227152+00:00 [queued]>
+[2025-02-15T23:44:14.050+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 6
+[2025-02-15T23:44:14.072+0000] {taskinstance.py:2890} INFO - Executing <Task(PythonOperator): main12> on 2025-02-15 23:44:09.227152+00:00
+[2025-02-15T23:44:14.084+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dag_mod1234', 'main12', 'manual__2025-02-15T23:44:09.227152+00:00', '--job-id', '90', '--raw', '--subdir', 'DAGS_FOLDER/dag_mod1.py', '--cfg-path', '/tmp/tmpy4mggut8']
+[2025-02-15T23:44:14.086+0000] {standard_task_runner.py:105} INFO - Job 90: Subtask main12
+[2025-02-15T23:44:14.090+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=5105) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-02-15T23:44:14.091+0000] {standard_task_runner.py:72} INFO - Started process 5116 to run task
+[2025-02-15T23:44:14.146+0000] {task_command.py:467} INFO - Running <TaskInstance: dag_mod1234.main12 manual__2025-02-15T23:44:09.227152+00:00 [running]> on host ce687c8aaad7
+[2025-02-15T23:44:14.262+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_mod1234' AIRFLOW_CTX_TASK_ID='main12' AIRFLOW_CTX_EXECUTION_DATE='2025-02-15T23:44:09.227152+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-02-15T23:44:09.227152+00:00'
+[2025-02-15T23:44:14.264+0000] {logging_mixin.py:190} INFO - Task instance is in running state
+[2025-02-15T23:44:14.265+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2025-02-15T23:44:14.266+0000] {logging_mixin.py:190} INFO - Current task name:main12 state:running start_date:2025-02-15 23:44:14.031500+00:00
+[2025-02-15T23:44:14.267+0000] {logging_mixin.py:190} INFO - Dag name:dag_mod1234 and current dag run status:running
+[2025-02-15T23:44:14.268+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-02-15T23:44:15.162+0000] {selenium_manager.py:138} WARNING - The geckodriver version (0.30.0) detected in PATH at /usr/local/bin/geckodriver might not be compatible with the detected firefox version (128.7.0); currently, geckodriver 0.35.0 is recommended for firefox 128.*, so it is advised to delete the driver in PATH and retry
+[2025-02-15T23:44:34.970+0000] {logging_mixin.py:190} INFO - 61 articles found.
+[2025-02-15T23:44:34.995+0000] {logging_mixin.py:190} INFO - Saved: data_/news_1.html
+[2025-02-15T23:44:35.010+0000] {logging_mixin.py:190} INFO - Saved: data_/news_2.html
+[2025-02-15T23:44:35.030+0000] {logging_mixin.py:190} INFO - Saved: data_/news_3.html
+[2025-02-15T23:44:35.048+0000] {logging_mixin.py:190} INFO - Saved: data_/news_4.html
+[2025-02-15T23:44:35.065+0000] {logging_mixin.py:190} INFO - Saved: data_/news_5.html
+[2025-02-15T23:44:35.082+0000] {logging_mixin.py:190} INFO - Saved: data_/news_6.html
+[2025-02-15T23:44:35.096+0000] {logging_mixin.py:190} INFO - Saved: data_/news_7.html
+[2025-02-15T23:44:35.109+0000] {logging_mixin.py:190} INFO - Saved: data_/news_8.html
+[2025-02-15T23:44:35.126+0000] {logging_mixin.py:190} INFO - Saved: data_/news_9.html
+[2025-02-15T23:44:35.143+0000] {logging_mixin.py:190} INFO - Saved: data_/news_10.html
+[2025-02-15T23:44:35.158+0000] {logging_mixin.py:190} INFO - Saved: data_/news_11.html
+[2025-02-15T23:44:35.169+0000] {logging_mixin.py:190} INFO - Saved: data_/news_12.html
+[2025-02-15T23:44:35.183+0000] {logging_mixin.py:190} INFO - Saved: data_/news_13.html
+[2025-02-15T23:44:35.212+0000] {logging_mixin.py:190} INFO - Saved: data_/news_14.html
+[2025-02-15T23:44:35.226+0000] {logging_mixin.py:190} INFO - Saved: data_/news_15.html
+[2025-02-15T23:44:35.238+0000] {logging_mixin.py:190} INFO - Saved: data_/news_16.html
+[2025-02-15T23:44:35.262+0000] {logging_mixin.py:190} INFO - Saved: data_/news_17.html
+[2025-02-15T23:44:35.282+0000] {logging_mixin.py:190} INFO - Saved: data_/news_18.html
+[2025-02-15T23:44:35.298+0000] {logging_mixin.py:190} INFO - Saved: data_/news_19.html
+[2025-02-15T23:44:35.311+0000] {logging_mixin.py:190} INFO - Saved: data_/news_20.html
+[2025-02-15T23:44:35.324+0000] {logging_mixin.py:190} INFO - Saved: data_/news_21.html
+[2025-02-15T23:44:35.338+0000] {logging_mixin.py:190} INFO - Saved: data_/news_22.html
+[2025-02-15T23:44:35.349+0000] {logging_mixin.py:190} INFO - Saved: data_/news_23.html
+[2025-02-15T23:44:35.364+0000] {logging_mixin.py:190} INFO - Saved: data_/news_24.html
+[2025-02-15T23:44:35.382+0000] {logging_mixin.py:190} INFO - Saved: data_/news_25.html
+[2025-02-15T23:44:35.407+0000] {logging_mixin.py:190} INFO - Saved: data_/news_26.html
+[2025-02-15T23:44:35.434+0000] {logging_mixin.py:190} INFO - Saved: data_/news_27.html
+[2025-02-15T23:44:35.458+0000] {logging_mixin.py:190} INFO - Saved: data_/news_28.html
+[2025-02-15T23:44:35.489+0000] {logging_mixin.py:190} INFO - Saved: data_/news_29.html
+[2025-02-15T23:44:35.520+0000] {logging_mixin.py:190} INFO - Saved: data_/news_30.html
+[2025-02-15T23:44:35.553+0000] {logging_mixin.py:190} INFO - Saved: data_/news_31.html
+[2025-02-15T23:44:35.578+0000] {logging_mixin.py:190} INFO - Saved: data_/news_32.html
+[2025-02-15T23:44:35.606+0000] {logging_mixin.py:190} INFO - Saved: data_/news_33.html
+[2025-02-15T23:44:35.628+0000] {logging_mixin.py:190} INFO - Saved: data_/news_34.html
+[2025-02-15T23:44:35.648+0000] {logging_mixin.py:190} INFO - Saved: data_/news_35.html
+[2025-02-15T23:44:35.662+0000] {logging_mixin.py:190} INFO - Saved: data_/news_36.html
+[2025-02-15T23:44:35.674+0000] {logging_mixin.py:190} INFO - Saved: data_/news_37.html
+[2025-02-15T23:44:35.701+0000] {logging_mixin.py:190} INFO - Saved: data_/news_38.html
+[2025-02-15T23:44:35.710+0000] {logging_mixin.py:190} INFO - Saved: data_/news_39.html
+[2025-02-15T23:44:35.720+0000] {logging_mixin.py:190} INFO - Saved: data_/news_40.html
+[2025-02-15T23:44:35.729+0000] {logging_mixin.py:190} INFO - Saved: data_/news_41.html
+[2025-02-15T23:44:35.738+0000] {logging_mixin.py:190} INFO - Saved: data_/news_42.html
+[2025-02-15T23:44:35.750+0000] {logging_mixin.py:190} INFO - Saved: data_/news_43.html
+[2025-02-15T23:44:35.768+0000] {logging_mixin.py:190} INFO - Saved: data_/news_44.html
+[2025-02-15T23:44:35.798+0000] {logging_mixin.py:190} INFO - Saved: data_/news_45.html
+[2025-02-15T23:44:35.811+0000] {logging_mixin.py:190} INFO - Saved: data_/news_46.html
+[2025-02-15T23:44:35.829+0000] {logging_mixin.py:190} INFO - Saved: data_/news_47.html
+[2025-02-15T23:44:35.839+0000] {logging_mixin.py:190} INFO - Saved: data_/news_48.html
+[2025-02-15T23:44:35.848+0000] {logging_mixin.py:190} INFO - Saved: data_/news_49.html
+[2025-02-15T23:44:35.858+0000] {logging_mixin.py:190} INFO - Saved: data_/news_50.html
+[2025-02-15T23:44:35.868+0000] {logging_mixin.py:190} INFO - Saved: data_/news_51.html
+[2025-02-15T23:44:35.876+0000] {logging_mixin.py:190} INFO - Saved: data_/news_52.html
+[2025-02-15T23:44:35.895+0000] {logging_mixin.py:190} INFO - Saved: data_/news_53.html
+[2025-02-15T23:44:35.911+0000] {logging_mixin.py:190} INFO - Saved: data_/news_54.html
+[2025-02-15T23:44:35.928+0000] {logging_mixin.py:190} INFO - Saved: data_/news_55.html
+[2025-02-15T23:44:35.948+0000] {logging_mixin.py:190} INFO - Saved: data_/news_56.html
+[2025-02-15T23:44:35.964+0000] {logging_mixin.py:190} INFO - Saved: data_/news_57.html
+[2025-02-15T23:44:35.984+0000] {logging_mixin.py:190} INFO - Saved: data_/news_58.html
+[2025-02-15T23:44:36.007+0000] {logging_mixin.py:190} INFO - Saved: data_/news_59.html
+[2025-02-15T23:44:36.025+0000] {logging_mixin.py:190} INFO - Saved: data_/news_60.html
+[2025-02-15T23:44:36.038+0000] {logging_mixin.py:190} INFO - Saved: data_/news_61.html
+[2025-02-15T23:44:37.605+0000] {connectionpool.py:868} WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fd727bbdee0>: Failed to establish a new connection: [Errno 111] Connection refused')': /session/9c473e1c-d5d9-4f16-bddc-365961eb5050
+[2025-02-15T23:44:37.607+0000] {connectionpool.py:868} WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fd727bbdf70>: Failed to establish a new connection: [Errno 111] Connection refused')': /session/9c473e1c-d5d9-4f16-bddc-365961eb5050
+[2025-02-15T23:44:37.608+0000] {connectionpool.py:868} WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fd727bbe720>: Failed to establish a new connection: [Errno 111] Connection refused')': /session/9c473e1c-d5d9-4f16-bddc-365961eb5050
+[2025-02-15T23:44:37.611+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-15T23:44:37.640+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-02-15T23:44:37.641+0000] {taskinstance.py:353} INFO - Marking task as SUCCESS. dag_id=dag_mod1234, task_id=main12, run_id=manual__2025-02-15T23:44:09.227152+00:00, execution_date=20250215T234409, start_date=20250215T234414, end_date=20250215T234437
+[2025-02-15T23:44:37.687+0000] {logging_mixin.py:190} INFO - Task instance in success state
+[2025-02-15T23:44:37.688+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: running
+[2025-02-15T23:44:37.689+0000] {logging_mixin.py:190} INFO - Dag name:dag_mod1234 queued_at:2025-02-15 23:44:09.658995+00:00
+[2025-02-15T23:44:37.689+0000] {logging_mixin.py:190} INFO - Task hostname:ce687c8aaad7 operator:PythonOperator
+[2025-02-15T23:44:37.705+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-15T23:44:37.768+0000] {taskinstance.py:3901} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-02-15T23:44:37.770+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

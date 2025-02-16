@@ -1,0 +1,280 @@
+[2025-02-15T23:55:07.962+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-15T23:55:07.984+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_mod1234.main4 manual__2025-02-15T23:44:09.227152+00:00 [queued]>
+[2025-02-15T23:55:07.996+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_mod1234.main4 manual__2025-02-15T23:44:09.227152+00:00 [queued]>
+[2025-02-15T23:55:07.997+0000] {taskinstance.py:2867} INFO - Starting attempt 3 of 6
+[2025-02-15T23:55:08.012+0000] {taskinstance.py:2890} INFO - Executing <Task(PythonOperator): main4> on 2025-02-15 23:44:09.227152+00:00
+[2025-02-15T23:55:08.024+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dag_mod1234', 'main4', 'manual__2025-02-15T23:44:09.227152+00:00', '--job-id', '101', '--raw', '--subdir', 'DAGS_FOLDER/dag_mod1.py', '--cfg-path', '/tmp/tmp2q12bd88']
+[2025-02-15T23:55:08.025+0000] {standard_task_runner.py:105} INFO - Job 101: Subtask main4
+[2025-02-15T23:55:08.027+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=11956) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-02-15T23:55:08.028+0000] {standard_task_runner.py:72} INFO - Started process 11984 to run task
+[2025-02-15T23:55:08.076+0000] {task_command.py:467} INFO - Running <TaskInstance: dag_mod1234.main4 manual__2025-02-15T23:44:09.227152+00:00 [running]> on host ce687c8aaad7
+[2025-02-15T23:55:08.174+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_mod1234' AIRFLOW_CTX_TASK_ID='main4' AIRFLOW_CTX_EXECUTION_DATE='2025-02-15T23:44:09.227152+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-02-15T23:44:09.227152+00:00'
+[2025-02-15T23:55:08.176+0000] {logging_mixin.py:190} INFO - Task instance is in running state
+[2025-02-15T23:55:08.177+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2025-02-15T23:55:08.178+0000] {logging_mixin.py:190} INFO - Current task name:main4 state:running start_date:2025-02-15 23:55:07.985350+00:00
+[2025-02-15T23:55:08.179+0000] {logging_mixin.py:190} INFO - Dag name:dag_mod1234 and current dag run status:running
+[2025-02-15T23:55:08.179+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-02-15T23:55:08.192+0000] {logging_mixin.py:190} INFO - CSV file path: /opt/***/assign2/data_home.csv
+[2025-02-15T23:55:08.193+0000] {logging_mixin.py:190} INFO - Table name: data
+[2025-02-15T23:55:08.642+0000] {logging_mixin.py:190} INFO - Columns in CSV: ['Headline', 'Image Path', 'Encoding']
+[2025-02-15T23:55:08.652+0000] {base.py:84} INFO - Retrieving connection 'postgres_default'
+[2025-02-15T23:55:08.657+0000] {logging_mixin.py:190} INFO - Create table query: 
+    CREATE TABLE IF NOT EXISTS "data" (
+        "Headline" VARCHAR, "Image Path" VARCHAR, "Encoding" VARCHAR
+    )
+    
+[2025-02-15T23:55:08.659+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.661+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.663+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.664+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.665+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.666+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.667+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.669+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.670+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.672+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.673+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.674+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.736+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.738+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.739+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.740+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.741+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.743+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.744+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.745+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.746+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.747+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.748+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.804+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.806+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.807+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.808+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.809+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.810+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.811+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.813+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.824+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.833+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.842+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.901+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.912+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.924+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.940+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.953+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.967+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.982+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:08.995+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:09.009+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:09.022+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:09.035+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:09.038+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:09.051+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:09.062+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:09.081+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:09.097+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:09.113+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:09.125+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:09.136+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:09.145+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:09.221+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:09.290+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:09.357+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:09.423+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:09.487+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:09.549+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:09.613+0000] {logging_mixin.py:190} INFO - Insert query: 
+        INSERT INTO "data" ("Headline", "Image Path", "Encoding")
+        VALUES (%s, %s, %s)
+        
+[2025-02-15T23:55:09.631+0000] {logging_mixin.py:190} INFO - Data insertion completed successfully
+[2025-02-15T23:55:09.633+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-02-15T23:55:09.642+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-02-15T23:55:09.643+0000] {taskinstance.py:353} INFO - Marking task as SUCCESS. dag_id=dag_mod1234, task_id=main4, run_id=manual__2025-02-15T23:44:09.227152+00:00, execution_date=20250215T234409, start_date=20250215T235507, end_date=20250215T235509
+[2025-02-15T23:55:09.668+0000] {logging_mixin.py:190} INFO - Task instance in success state
+[2025-02-15T23:55:09.669+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: running
+[2025-02-15T23:55:09.670+0000] {logging_mixin.py:190} INFO - Dag name:dag_mod1234 queued_at:2025-02-15 23:44:09.658995+00:00
+[2025-02-15T23:55:09.670+0000] {logging_mixin.py:190} INFO - Task hostname:ce687c8aaad7 operator:PythonOperator
+[2025-02-15T23:55:09.700+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-15T23:55:09.718+0000] {taskinstance.py:3901} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-15T23:55:09.720+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
