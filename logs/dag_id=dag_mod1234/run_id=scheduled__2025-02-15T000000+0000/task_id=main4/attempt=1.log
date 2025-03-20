@@ -1,0 +1,154 @@
+[2025-02-16T00:01:10.301+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-16T00:01:10.332+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_mod1234.main4 scheduled__2025-02-15T00:00:00+00:00 [queued]>
+[2025-02-16T00:01:10.350+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_mod1234.main4 scheduled__2025-02-15T00:00:00+00:00 [queued]>
+[2025-02-16T00:01:10.363+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 6
+[2025-02-16T00:01:10.422+0000] {taskinstance.py:2890} INFO - Executing <Task(PythonOperator): main4> on 2025-02-15 00:00:00+00:00
+[2025-02-16T00:01:10.445+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dag_mod1234', 'main4', 'scheduled__2025-02-15T00:00:00+00:00', '--job-id', '104', '--raw', '--subdir', 'DAGS_FOLDER/dag_mod1.py', '--cfg-path', '/tmp/tmp0c6m76qv']
+[2025-02-16T00:01:10.448+0000] {standard_task_runner.py:105} INFO - Job 104: Subtask main4
+[2025-02-16T00:01:10.456+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=15711) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-02-16T00:01:10.458+0000] {standard_task_runner.py:72} INFO - Started process 15731 to run task
+[2025-02-16T00:01:10.533+0000] {task_command.py:467} INFO - Running <TaskInstance: dag_mod1234.main4 scheduled__2025-02-15T00:00:00+00:00 [running]> on host ce687c8aaad7
+[2025-02-16T00:01:10.681+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_mod1234' AIRFLOW_CTX_TASK_ID='main4' AIRFLOW_CTX_EXECUTION_DATE='2025-02-15T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-02-15T00:00:00+00:00'
+[2025-02-16T00:01:10.683+0000] {logging_mixin.py:190} INFO - Task instance is in running state
+[2025-02-16T00:01:10.685+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2025-02-16T00:01:10.685+0000] {logging_mixin.py:190} INFO - Current task name:main4 state:running start_date:2025-02-16 00:01:10.333176+00:00
+[2025-02-16T00:01:10.686+0000] {logging_mixin.py:190} INFO - Dag name:dag_mod1234 and current dag run status:running
+[2025-02-16T00:01:10.687+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-02-16T00:01:10.691+0000] {logging_mixin.py:190} INFO - CSV file path: /opt/***/assign2/data_home.csv
+[2025-02-16T00:01:11.656+0000] {logging_mixin.py:190} INFO - Columns in CSV: ['Headline', 'Image Path', 'Encoding']
+[2025-02-16T00:01:11.671+0000] {base.py:84} INFO - Retrieving connection 'postgres_default'
+[2025-02-16T00:01:11.801+0000] {taskinstance.py:3313} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'URL'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 768, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 734, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/assign2/main4.py", line 98, in main4
+    cursor.execute(insert_headline_query, (row['Headline'], row['URL'], row['Scrape Timestamp'], row['Article Date']))
+                                                            ~~~^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/series.py", line 1121, in __getitem__
+    return self._get_value(key)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/series.py", line 1237, in _get_value
+    loc = self.index.get_loc(label)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'URL'
+[2025-02-16T00:01:11.851+0000] {logging_mixin.py:190} INFO - Task instance in failure state
+[2025-02-16T00:01:11.853+0000] {logging_mixin.py:190} INFO - Task start:2025-02-16 00:01:10.333176+00:00 end:2025-02-16 00:01:11.850419+00:00 duration:1.517243
+[2025-02-16T00:01:11.854+0000] {logging_mixin.py:190} INFO - Task:<Task(PythonOperator): main4> dag:<DAG: dag_mod1234> dagrun:<DagRun dag_mod1234 @ 2025-02-15 00:00:00+00:00: scheduled__2025-02-15T00:00:00+00:00, state:running, queued_at: 2025-02-16 00:00:00.486571+00:00. externally triggered: False>
+[2025-02-16T00:01:11.855+0000] {logging_mixin.py:190} INFO - Failure caused by 'URL'
+[2025-02-16T00:01:11.855+0000] {taskinstance.py:1226} INFO - Marking task as UP_FOR_RETRY. dag_id=dag_mod1234, task_id=main4, run_id=scheduled__2025-02-15T00:00:00+00:00, execution_date=20250215T000000, start_date=20250216T000110, end_date=20250216T000111
+[2025-02-16T00:01:11.960+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-02-16T00:01:11.962+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 104 for task main4 ('URL'; 15731)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'URL'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3006, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 274, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3161, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3185, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 768, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 734, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/assign2/main4.py", line 98, in main4
+    cursor.execute(insert_headline_query, (row['Headline'], row['URL'], row['Scrape Timestamp'], row['Article Date']))
+                                                            ~~~^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/series.py", line 1121, in __getitem__
+    return self._get_value(key)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/series.py", line 1237, in _get_value
+    loc = self.index.get_loc(label)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'URL'
+[2025-02-16T00:01:12.050+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-02-16T00:01:12.107+0000] {taskinstance.py:3901} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-16T00:01:12.111+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
